@@ -4,13 +4,431 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minter — Your Website, Handled.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>:root--green:#06BB60;--green-light:#d4fae8;--green-deep:#0fa76e;--gold:#D4A853;--gold-light:#fef3d4;--dark:#0d0d0d;--gray-700:#333333;--gray-500:#666666;--gray-400:#888888;--gray-200:#e5e5e5;--gray-100:#f5f5f5;--gray-50:#fafafa;--white:#ffffff;--border:rgba(0,0,0,0.05);--border-medium:rgba(0,0,0,0.08);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px*margin:0;padding:0;box-sizing:border-boxbodyfont-family:'Inter',system-ui,sans-serif;color:var(--dark);background:var(--white);line-height:1.5;-webkit-font-smoothing:antialiasednavposition:sticky;top:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto.nav-logofont-size:20px;font-weight:700;letter-spacing:-0.5px;color:var(--dark);text-decoration:none.nav-logo spancolor:var(--gold).nav-linksdisplay:flex;gap:32px;align-items:center.nav-links afont-size:14px;font-weight:500;color:var(--gray-700);text-decoration:none;transition:color 0.2s.nav-links a:hovercolor:var(--green).nav-ctabackground:var(--dark);color:var(--white) !important;padding:8px 20px;border-radius:var(--radius-full);font-weight:500;transition:opacity 0.2s.nav-cta:hoveropacity:0.85;color:var(--white) !important.heroposition:relative;padding:96px 32px 80px;text-align:center;max-width:1200px;margin:0 auto;overflow:hidden.hero::beforecontent:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse at center,rgba(6,187,96,0.08) 0%,rgba(6,187,96,0.02) 50%,transparent 75%);pointer-events:none;z-index:0.hero-labeldisplay:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);background:var(--green-light);padding:6px 16px;border-radius:var(--radius-full);margin-bottom:24px;position:relative;z-index:1.hero h1font-size:clamp(40px,6vw,64px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:var(--dark);margin-bottom:20px;position:relative;z-index:1.hero h1 .ecolor:var(--gold).hero pfont-size:18px;color:var(--gray-500);max-width:540px;margin:0 auto 40px;line-height:1.6;position:relative;z-index:1.hero-buttonsdisplay:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1.btn-primarybackground:var(--green);color:var(--white);padding:12px 28px;border-radius:var(--radius-full);font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.2s.btn-primary:hoverbackground:var(--green-deep);transform:translateY(-1px).btn-secondarybackground:var(--white);color:var(--dark);padding:11px 28px;border-radius:var(--radius-full);font-size:15px;font-weight:500;text-decoration:none;border:1px solid var(--border-medium);cursor:pointer;transition:border-color 0.2s,transform 0.2s.btn-secondary:hoverborder-color:var(--dark);transform:translateY(-1px).services-strippadding:48px 32px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px.service-pilldisplay:flex;align-items:center;gap:10px;padding:14px 20px;background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-md);font-size:14px;font-weight:500;color:var(--gray-700);transition:border-color 0.2s,background 0.2s.service-pill:hoverborder-color:var(--green);background:var(--green-light).service-pill .iconwidth:32px;height:32px;border-radius:8px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0.section-headertext-align:center;padding:80px 32px 48px;max-width:1200px;margin:0 auto.section-header.tightpadding-top:48px.section-labelfont-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:12px.section-header h2font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-0.8px;line-height:1.15;color:var(--dark);margin-bottom:16px.section-header h2 .ecolor:var(--gold).section-header pfont-size:17px;color:var(--gray-500);max-width:520px;margin:0 auto;line-height:1.6.package-gridpadding:0 32px 80px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px.package-cardbackground:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:border-color 0.2s,box-shadow 0.2s.package-card:hoverborder-color:var(--green);box-shadow:0 4px 20px rgba(6,187,96,0.08).package-card.featuredborder-color:var(--green);background:linear-gradient(135deg,rgba(6,187,96,0.03) 0%,var(--white) 100%);position:relative.package-card.featured::beforecontent:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 16px;border-radius:var(--radius-full).package-iconwidth:48px;height:48px;border-radius:12px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px.package-card h3font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px.package-card .pricefont-size:36px;font-weight:700;color:var(--green);margin-bottom:4px.package-card .price-labelfont-size:14px;color:var(--gray-400);margin-bottom:24px.package-featureslist-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px.package-features lidisplay:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-700).package-features li::beforecontent:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px.package-ctadisplay:block;text-align:center;background:var(--dark);color:var(--white);padding:12px 24px;border-radius:var(--radius-full);font-size:14px;font-weight:600;text-decoration:none;transition:opacity 0.2s.package-cta:hoveropacity:0.85.package-cta.greenbackground:var(--green).package-cta.green:hoverbackground:var(--green-deep).steps-sectionbackground:var(--gray-50);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 32px.steps-innermax-width:1200px;margin:0 auto.steps-griddisplay:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;margin-top:48px.steptext-align:center.step-numberwidth:48px;height:48px;border-radius:50%;background:var(--green);color:var(--white);font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px.step h3font-size:17px;font-weight:600;color:var(--dark);margin-bottom:8px.step pfont-size:14px;color:var(--gray-500);line-height:1.6.audit-ctapadding:96px 32px;text-align:center;max-width:1200px;margin:0 auto;position:relative.audit-cta::beforecontent:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(212,168,83,0.08) 0%,transparent 70%);pointer-events:none;z-index:0.audit-cardbackground:var(--dark);border-radius:var(--radius-lg);padding:64px 48px;position:relative;z-index:1;max-width:680px;margin:0 auto.audit-card .gold-efont-size:56px;font-weight:700;color:var(--gold);letter-spacing:-1px.audit-card h2font-size:32px;font-weight:700;color:var(--white);margin-bottom:12px;letter-spacing:-0.5px.audit-card h2 spancolor:var(--gold).audit-card pfont-size:16px;color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.6.audit-formdisplay:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center.audit-form inputflex:1;min-width:200px;padding:12px 20px;border-radius:var(--radius-full);border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:var(--white);font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s.audit-form input::placeholdercolor:rgba(255,255,255,0.35).audit-form input:focusborder-color:var(--gold).audit-form buttonbackground:var(--gold);color:var(--dark);padding:12px 28px;border-radius:var(--radius-full);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:opacity 0.2s,transform 0.2s.audit-form button:hoveropacity:0.9;transform:translateY(-1px).audit-notemargin-top:16px;font-size:12px;color:rgba(255,255,255,0.4)footerbackground:var(--dark);padding:48px 32px 32px;border-top:3px solid var(--gold).footer-innermax-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px.footer-brand .logofont-size:22px;font-weight:700;color:var(--white);margin-bottom:8px.footer-brand .logo spancolor:var(--gold).footer-brand pfont-size:13px;color:rgba(255,255,255,0.4);max-width:240px;line-height:1.6.footer-linksdisplay:flex;gap:48px.footer-col h4font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px.footer-col adisplay:block;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;margin-bottom:8px;transition:color 0.2s.footer-col a:hovercolor:var(--green).footer-bottommax-width:1200px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px.footer-bottom pfont-size:12px;color:rgba(255,255,255,0.3).footer-bottom .socialsdisplay:flex;gap:16px.footer-bottom .socials afont-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s.footer-bottom .socials a:hovercolor:var(--green)@media (max-width:768px)navpadding:0 20px.nav-linksdisplay:none.heropadding:72px 20px 56px.hero h1letter-spacing:-1px.section-headerpadding:56px 20px 32px.package-gridpadding:0 20px 56px.steps-sectionpadding:56px 20px.audit-ctapadding:56px 20px.audit-cardpadding:40px 24px.footer-innerflex-direction:column.footer-linksflex-wrap:wrap;gap:32px.chat-windowwidth:calc(100vw - 48px);max-width:360px.chat-widgetposition:fixed;bottom:24px;right:24px;z-index:999.chat-togglewidth:60px;height:60px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(6,187,96,0.35);transition:transfo</style><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  <style>
+
+:root {
+  --green: #06BB60;
+  --green-light: #d4fae8;
+  --green-deep: #0fa76e;
+  --gold: #D4A853;
+  --gold-light: #fef3d4;
+  --dark: #0d0d0d;
+  --gray-700: #333333;
+  --gray-500: #666666;
+  --gray-400: #888888;
+  --gray-200: #e5e5e5;
+  --gray-100: #f5f5f5;
+  --gray-50: #fafafa;
+  --white: #ffffff;
+  --border: rgba(0,0,0,0.05);
+  --border-medium: rgba(0,0,0,0.08);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; color: var(--dark); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+nav { position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
+.nav-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--dark); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-700); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta { background: var(--dark); color: var(--white) !important; padding: 8px 20px; border-radius: var(--radius-full); font-weight: 500; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.85; }
+.hero { position: relative; padding: 96px 32px 80px; text-align: center; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse at center, rgba(6,187,96,0.08) 0%, rgba(6,187,96,0.02) 50%, transparent 75%); pointer-events: none; z-index: 0; }
+.hero-label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); background: var(--green-light); padding: 6px 16px; border-radius: var(--radius-full); margin-bottom: 24px; position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.05; letter-spacing: -1.5px; color: var(--dark); margin-bottom: 20px; position: relative; z-index: 1; }
+.hero h1 .e { color: var(--gold); }
+.hero p { font-size: 18px; color: var(--gray-500); max-width: 540px; margin: 0 auto 40px; line-height: 1.6; position: relative; z-index: 1; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+.btn-primary { background: var(--green); color: var(--white); padding: 12px 28px; border-radius: var(--radius-full); font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; display: inline-block; }
+.btn-primary:hover { background: var(--green-deep); transform: translateY(-1px); }
+.btn-secondary { background: var(--white); color: var(--dark); padding: 11px 28px; border-radius: var(--radius-full); font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-medium); cursor: pointer; transition: border-color 0.2s, transform 0.2s; display: inline-block; }
+.btn-secondary:hover { border-color: var(--dark); transform: translateY(-1px); }
+.services-strip { padding: 48px 32px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.service-pill { display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--gray-50); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 14px; font-weight: 500; color: var(--gray-700); transition: border-color 0.2s, background 0.2s; }
+.service-pill:hover { border-color: var(--green); background: var(--green-light); }
+.service-pill .icon { width: 32px; height: 32px; border-radius: 8px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.section-header { text-align: center; padding: 80px 32px 48px; max-width: 1200px; margin: 0 auto; }
+.section-header.tight { padding-top: 48px; }
+.section-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+.section-header h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.8px; line-height: 1.15; color: var(--dark); margin-bottom: 16px; }
+.section-header h2 .e { color: var(--gold); }
+.section-header p { font-size: 17px; color: var(--gray-500); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.package-grid { padding: 0 32px 80px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.package-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; transition: border-color 0.2s, box-shadow 0.2s; }
+.package-card:hover { border-color: var(--green); box-shadow: 0 4px 20px rgba(6,187,96,0.08); }
+.package-card.featured { border-color: var(--green); background: linear-gradient(135deg, rgba(6,187,96,0.03) 0%, var(--white) 100%); position: relative; }
+.package-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 16px; border-radius: var(--radius-full); }
+.package-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+.package-card h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.package-card .price { font-size: 36px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+.package-card .price-label { font-size: 14px; color: var(--gray-400); margin-bottom: 24px; }
+.package-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.package-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--gray-700); }
+.package-features li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.package-cta { display: block; text-align: center; background: var(--dark); color: var(--white); padding: 12px 24px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+.package-cta:hover { opacity: 0.85; }
+.package-cta.green { background: var(--green); }
+.package-cta.green:hover { background: var(--green-deep); }
+.steps-section { background: var(--gray-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 32px; }
+.steps-inner { max-width: 1200px; margin: 0 auto; }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-top: 48px; }
+.step { text-align: center; }
+.step-number { width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: var(--white); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.step h3 { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+.step p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+.audit-cta { padding: 96px 32px; text-align: center; max-width: 1200px; margin: 0 auto; position: relative; }
+.audit-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(212,168,83,0.08) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.audit-card { background: var(--dark); border-radius: var(--radius-lg); padding: 64px 48px; position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.audit-card .gold-e { font-size: 56px; font-weight: 700; color: var(--gold); letter-spacing: -1px; }
+.audit-card h2 { font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 12px; letter-spacing: -0.5px; }
+.audit-card h2 span { color: var(--gold); }
+.audit-card p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 32px; line-height: 1.6; }
+.audit-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.audit-form input { flex: 1; min-width: 200px; padding: 12px 20px; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: var(--white); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+.audit-form input::placeholder { color: rgba(255,255,255,0.35); }
+.audit-form input:focus { border-color: var(--gold); }
+.audit-form button { background: var(--gold); color: var(--dark); padding: 12px 28px; border-radius: var(--radius-full); font-size: 15px; font-weight: 700; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.2s; }
+.audit-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+.audit-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.4); }
+footer { background: var(--dark); padding: 48px 32px 32px; border-top: 3px solid var(--gold); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+.footer-brand .logo { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.footer-brand .logo span { color: var(--gold); }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); max-width: 240px; line-height: 1.6; }
+.footer-links { display: flex; gap: 48px; }
+.footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+.footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--green); }
+.footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-bottom .socials { display: flex; gap: 16px; }
+.footer-bottom .socials a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-bottom .socials a:hover { color: var(--green); }
+.chat-window { width: calc(100vw - 48px); max-width: 360px; }
+.chat-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+.chat-toggle { width: 60px; height: 60px; border-radius: 50%; background: var(--green); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(6,187,96,0.35); transition: transform 0.2s; }
+.chat-toggle:hover { transform: scale(1.05); }
+.chat-badge { position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; background: var(--gold); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--dark); display: flex; align-items: center; justify-content: center; }
+.chat-box { position: absolute; bottom: 72px; right: 0; width: 360px; max-width: calc(100vw - 48px); background: var(--white); border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,0.15); overflow: hidden; display: none; flex-direction: column; max-height: 480px; }
+.chat-box.open { display: flex; flex-direction: column; }
+.chat-header { background: var(--green); color: var(--white); padding: 16px 20px; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header button { background: none; border: none; color: var(--white); cursor: pointer; font-size: 20px; line-height: 1; opacity: 0.8; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.chat-msg { display: flex; gap: 8px; align-items: flex-start; }
+.chat-msg.bot .avatar { width: 28px; height: 28px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; flex-shrink: 0; }
+.chat-msg.user { flex-direction: row-reverse; }
+.chat-msg .bubble { max-width: 75%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; }
+.chat-msg.bot .bubble { background: var(--gray-100); color: var(--dark); border-bottom-left-radius: 4px; }
+.chat-msg.user .bubble { background: var(--green); color: var(--white); border-bottom-right-radius: 4px; }
+.chat-typing { display: none; align-items: center; gap: 6px; padding: 0 20px 12px; font-size: 13px; color: var(--gray-400); }
+.chat-typing.show { display: flex; }
+.chat-typing span { width: 6px; height: 6px; background: var(--gray-400); border-radius: 50%; animation: typing 1.2s infinite; }
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
+.chat-input-area { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+.chat-input-area input { flex: 1; padding: 10px 14px; border: 1px solid var(--border-medium); border-radius: var(--radius-full); font-size: 14px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+.chat-input-area input:focus { border-color: var(--green); }
+.chat-input-area button { background: var(--green); color: white; border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.chat-input-area button:hover { background: var(--green-deep); }
+.quick-replies { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 12px; }
+.quick-reply { background: var(--green-light); color: var(--green-deep); border: 1px solid var(--green); border-radius: var(--radius-full); padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.quick-reply:hover { background: var(--green); color: white; }
+@media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .hero { padding: 72px 20px 56px; } .section-header { padding: 56px 20px 32px; } .package-grid { padding: 0 20px 56px; } .steps-section { padding: 56px 20px; } .audit-cta { padding: 56px 20px; } .audit-card { padding: 40px 24px; } .footer-inner { flex-direction: column; } .footer-links { flex-wrap: wrap; gap: 32px; } }
+
+  </style>
 </head>
-</head><body><!-- NAV --><nav><a href="#" class="nav-logo">M<span>I</span>NTER</a><div class="nav-links"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#audit" class="nav-cta">Free Website Audit</a></div></nav><!-- HERO --><section class="hero"><div class="hero-label">Web Design Agency</div><h1>Your Website,<br><span class="e">Handled.</span></h1><p>Professional restaurant websites with AI live chat, hosting, SEO, and unlimited edits — all in one monthly retainer.</p><div class="hero-buttons"><a href="#audit" class="btn-primary">Get a Free Website Audit</a><a href="#pricing" class="btn-secondary">See Pricing</a></div></section><!-- SERVICES STRIP --><section id="services"><div class="services-strip"><div class="service-pill"><div class="icon">🌐</div> Custom Website Design </div><div class="service-pill"><div class="icon">💬</div> AI Live Chat </div><div class="service-pill"><div class="icon">🔍</div> Minor SEO Optimization </div><div class="service-pill"><div class="icon">⚡</div> Speed Optimization </div><div class="service-pill"><div class="icon">🛡</div> Security & SSL </div><div class="service-pill"><div class="icon">✏️</div> Unlimited Edits </div><div class="service-pill"><div class="icon">📊</div> Monthly Reports </div><div class="service-pill"><div class="icon">🔄</div> Google Sync </div></div></section><!-- WHAT YOU GET --><section class="section-header tight" id="pricing"><div class="section-label">One Package. Everything Included.</div><h2>Website + AI Chat + SEO,<br><span class="e">All Handled.</span></h2><p>No tiers. No upsells. Just everything your local business needs — done for you.</p></section><div class="package-grid"><!-- Setup --><div class="package-card"><div class="package-icon">🚀</div><h3>Website Setup</h3><div class="price">$1,497</div><div class="price-label">one-time</div><ul class="package-features"><li>Custom restaurant website design</li><li>Mobile-first, responsive layout</li><li>Menu & photo showcase</li><li>Google Business integration</li><li>SSL & domain setup</li><li>Initial SEO foundation</li></ul><a href="#audit" class="package-cta">Start Your Project</a></div><!-- Retainer --><div class="package-card featured"><div class="package-icon">💼</div><h3>Monthly Retainer</h3><div class="price">$497<span style="font-size:20px;font-weight:400">/mo</span></div><div class="price-label">everything included</div><ul class="package-features"><li>Hosting, SSL & domain management</li><li>Unlimited content edits</li><li>AI live chat trained on your business</li><li>Lead capture (name, email, phone)</li><li>Minor SEO optimization</li><li>Monthly performance report</li><li>Priority 24hr support</li></ul><a href="#audit" class="package-cta green">Claim Your Spot</a></div><!-- Audit --><div class="package-card"><div class="package-icon">🔎</div><h3>Free Website Audit</h3><div class="price" style="color:var(--gold);">$0</div><div class="price-label">no strings attached</div><ul class="package-features"><li>Full site health check</li><li>SEO gap analysis</li><li>Speed evaluation</li><li>AI chat opportunity assessment</li><li>Written findings + recommendations</li><li>No sales pressure</li></ul><a href="#audit" class="package-cta">Request Your Audit</a></div></div><!-- HOW IT WORKS --><section class="steps-section" id="process"><div class="steps-inner"><div class="section-header"><div class="section-label">Simple Process</div><h2>Up and Running<br><span class="e">in Days.</span></h2></div><div class="steps-grid"><div class="step"><div class="step-number">1</div><h3>Free Audit</h3><p>We review your current web presence and identify what's costing you customers.</p></div><div class="step"><div class="step-number">2</div><h3>We Build</h3><p>Your custom website goes live with AI chat trained on your business, ready to capture leads.</p></div><div class="step"><div class="step-number">3</div><h3>You Grow</h3><p>We handle every update, every optimization, every late-night customer question.</p></div></div></div></section><!-- FREE AUDIT CTA --><section id="audit"><div class="audit-cta"><div class="audit-card"><div class="gold-e">E</div><h2>What's Your Website<br>Actually <span>Costing You?</span></h2><p>Get a free, no-BS website health audit. We'll tell you what's broken, what's missing, and what it's worth to fix it. No contracts. No pressure.</p><form class="audit-form" onsubmit="return false;"><input type="email" placeholder="Enter your business email"><button type="submit">Get Free Audit</button></form><p class="audit-note">Results delivered within 24 hours. Zero sales calls required.</p></div></div></section><!-- FOOTER --><footer><div class="footer-inner"><div class="footer-brand"><div class="logo">M<span>I</span>NTER</div><p>Web design done right. For local businesses that want to grow.</p></div><div class="footer-links"><div class="footer-col"><h4>Services</h4><a href="#">Website Design</a><a href="#">AI Live Chat</a><a href="#">Monthly Retainer</a><a href="#">Free Audit</a></div><div class="footer-col"><h4>Industries</h4><a href="#">Restaurants</a><a href="#">Home Services</a><a href="#">Salons</a><a href="#">Medical</a></div><div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Process</a><a href="#">Contact</a></div></div></div><div class="footer-bottom"><p>&copy; 2025 Minter. All rights reserved.</p><div class="socials"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div></footer><!-- CHAT WIDGET --><div class="chat-widget"><div class="chat-window" id="chatWindow"><div class="chat-header"><div class="chat-header-icon">💬</div><div class="chat-header-info"><h4>Minter Virtual Receptionist</h4><p>Typically replies instantly</p></div><div class="status-dot"></div></div><div class="chat-messages" id="chatMessages"><div class="msg bot"><span class="msg-meta">Minter Bot · just now</span> Hi! I'm your virtual receptionist 🌿 How can I help your business today? </div></div><div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div><div class="chat-quick-replies"><button class="quick-reply" onclick="sendQuickReply('What services do you offer?')">Services</button><button class="quick-reply" onclick="sendQuickReply('How much does a website cost?')">Pricing</button><button class="quick-reply" onclick="sendQuickReply('Can I get a free audit?')">Free Audit</button></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendMessage()"><button class="chat-send" onclick="sendMessage()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div></div><button class="chat-toggle" onclick="toggleChat()"><svg id="chatIcon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg><span class="chat-badge" id="chatBadge">1</span></button></div>
-<script>!function(){var d=document.createElement("style");d.textContent=`rm 0.2s,box-shadow 0.2s;position:relative.chat-toggle:hovertransform:scale(1.08);box-shadow:0 6px 28px rgba(6,187,96,0.45).chat-toggle svgwidth:26px;height:26px;fill:white.chat-badgeposition:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:var(--gold);color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid white.chat-windowposition:absolute;bottom:80px;right:0;width:360px;height:480px;background:var(--white);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.05);display:none;flex-direction:column;overflow:hidden.chat-window.opendisplay:flex.chat-headerbackground:var(--green);padding:16px 20px;display:flex;align-items:center;gap:12px.chat-header-iconwidth:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0.chat-header-info h4font-size:14px;font-weight:600;color:white.chat-header-info pfont-size:11px;color:rgba(255,255,255,0.75).status-dotwidth:8px;height:8px;border-radius:50%;background:#4ade80;margin-left:auto;flex-shrink:0;box-shadow:0 0 0 2px rgba(74,222,128,0.3).chat-messagesflex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:#f9fafb.msgmax-width:80%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5.msg.botbackground:var(--white);color:var(--dark);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px.msg-metacolor:var(--green);font-size:10px;font-weight:600;margin-bottom:4px;display:block.msg.userbackground:var(--green);color:white;align-self:flex-end;border-bottom-right-radius:4px.typing-indicatordisplay:none;align-self:flex-start;gap:5px;padding:12px 16px.typing-indicator.visibledisplay:flex;align-items:center.typing-indicator spanwidth:6px;height:6px;border-radius:50%;background:var(--gray-400);animation:typingBounce 1.2s infinite.typing-indicator span:nth-child(2)animation-delay:0.15s.typing-indicator span:nth-child(3)animation-delay:0.3s@keyframes typingBounce0%,60%,100%transform:translateY(0)30%transform:translateY(-5px).chat-quick-repliespadding:8px 16px 12px;display:flex;gap:8px;flex-wrap:wrap;background:#f9fafb;border-top:1px solid var(--border).quick-replybackground:var(--green-light);color:var(--green-deep);border:1px solid rgba(6,187,96,0.2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:background 0.2s;font-family:'Inter',sans-serif.quick-reply:hoverbackground:rgba(6,187,96,0.15).chat-input-areapadding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;background:white.chat-input-area inputflex:1;padding:10px 14px;border-radius:24px;border:1px solid var(--border);background:var(--gray-50);font-size:13px;font-family:'Inter',sans-serif;color:var(--dark);outline:none;transition:border-color 0.2s.chat-input-area input:focusborder-color:var(--green).chat-input-area input::placeholdercolor:var(--gray-400).chat-sendwidth:38px;height:38px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s,transform 0.2s.chat-send:hoverbackground:var(--green-deep);transform:scale(1.05).chat-send svgwidth:16px;height:16px;fill:white`;document.head.appendChild(d)}();</script>
-<script defer>const responses = { 'what services do you offer': "I handle everything your website needs — design, hosting, SSL, AI live chat, SEO optimization, and unlimited content edits. All in one flat monthly retainer. No juggling multiple vendors.", 'how much does a website cost': "Website setup is $1,497 one-time. After that, our all-in-one retainer is $497/month — that covers hosting, updates, AI chat, SEO, and priority support. No tiers, no upsells.", 'can i get a free audit': "Yes! I'll run a full health check on your current website — speed, SEO gaps, conversion opportunities — and send you a written report within 24 hours. No contract, no sales call required.", 'default': "Great question! I can connect you with our team to answer that. Want me to set up a free website audit so we can see exactly what your business needs?", 'hello': "Hey there! 👋 I'm your virtual receptionist from Minter. I can tell you about our website services, pricing, or help you get a free audit started.", 'hi': "Hi! 👋 Welcome to Minter. I can help you understand our services, pricing, or get a free website health audit scheduled.", }; function toggleChat() { const win = document.getElementById('chatWindow'); const badge = document.getElementById('chatBadge'); win.classList.toggle('open'); badge.style.display = win.classList.contains('open') ? 'none' : 'flex'; } function sendMessage() { const input = document.getElementById('chatInput'); const text = input.value.trim(); if (!text) return; appendMsg(text, 'user'); input.value = ''; showTyping(); const key = text.toLowerCase().replace(/[?!.,]/g, '').trim(); setTimeout(() => { hideTyping(); const reply = responses[key] || responses['default']; appendMsg(reply, 'bot'); }, 900 + Math.random() * 600); } function sendQuickReply(text) { document.getElementById('chatInput').value = text; sendMessage(); } function appendMsg(text, type) { const container = document.getElementById('chatMessages'); const div = document.createElement('div'); div.className = 'msg ' + type; const label = type === 'bot' ? '<span class="msg-meta">Minter Bot · just now</span>' : ''; div.innerHTML = label + text; container.appendChild(div); container.scrollTop = container.scrollHeight; } function showTyping() { document.getElementById('typingIndicator').classList.add('visible'); } function hideTyping() { document.getElementById('typingIndicator').classList.remove('visible'); }</script>
-</body></html>
+<body>
+  <nav>
+    <a href="#" class="nav-logo">M<span>I</span>NTER</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">How It Works</a>
+      <a href="#audit" class="nav-cta">Free Audit</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">Websites That Work While You Don't</div>
+    <h1>Your website,<br>handled. <span class="e">E</span>very week.</h1>
+    <p>Minter is a done-for-you web agency. We build, host, optimize, and maintain your website — then handle everything that pops up, forever.</p>
+    <div class="hero-buttons">
+      <a href="#audit" class="btn-primary">Get a Free Website Audit</a>
+      <a href="#pricing" class="btn-secondary">See Pricing</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="services-strip">
+      <div class="service-pill"><span class="icon">🌐</span> Website Setup</div>
+      <div class="service-pill"><span class="icon">☁️</span> Hosting &amp; Speed</div>
+      <div class="service-pill"><span class="icon">💬</span> AI Live Chat</div>
+      <div class="service-pill"><span class="icon">🔍</span> Minor SEO</div>
+      <div class="service-pill"><span class="icon">✏️</span> Unlimited Edits</div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-header">
+      <div class="section-label">Pricing</div>
+      <h2>Simple, honest <span class="e">e</span> pricing.</h2>
+      <p>No surprise invoices. No nickel-and-diming. Just a flat monthly fee that covers everything.</p>
+    </div>
+    <div class="package-grid">
+      <div class="package-card">
+        <div class="package-icon">🎨</div>
+        <h3>Website Setup</h3>
+        <div class="price">$1,497</div>
+        <div class="price-label">one-time</div>
+        <ul class="package-features">
+          <li>Custom designed for your business</li>
+          <li>Mobile-first, conversion-optimized</li>
+          <li>Google Business integration</li>
+          <li>Contact forms &amp; maps</li>
+          <li>1 month basic hosting included</li>
+        </ul>
+        <a href="#audit" class="package-cta">Get Started</a>
+      </div>
+      <div class="package-card featured">
+        <div class="package-icon">🔄</div>
+        <h3>Full Retainer</h3>
+        <div class="price">$497<span style="font-size:20px">/mo</span></div>
+        <div class="price-label">all-in-one, cancel anytime</div>
+        <ul class="package-features">
+          <li>Everything in Website Setup</li>
+          <li>Unlimited edits, forever</li>
+          <li>Premium hosting + speed optimization</li>
+          <li>AI live chat trained on your business</li>
+          <li>Minor SEO — title tags, schema, sitemap</li>
+          <li>Quarterly keyword review</li>
+          <li>Dedicated Slack/email support</li>
+        </ul>
+        <a href="#audit" class="package-cta green">Book a Call</a>
+      </div>
+      <div class="package-card">
+        <div class="package-icon">🔍</div>
+        <h3>Free Audit</h3>
+        <div class="price" style="color:var(--gold)">$0</div>
+        <div class="price-label">no strings attached</div>
+        <ul class="package-features">
+          <li>Website health check</li>
+          <li>SEO gap analysis</li>
+          <li>Conversion rate review</li>
+          <li>Actionable recommendations</li>
+          <li>Delivered within 24 hours</li>
+        </ul>
+        <a href="#audit" class="package-cta">Request Yours</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="steps-section">
+    <div class="steps-inner">
+      <div class="section-header tight">
+        <div class="section-label">How It Works</div>
+        <h2>Up and running in <span class="e">u</span>nder 2 weeks.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Audit</h3>
+          <p>We look at your current web presence and identify the biggest gaps costing you customers.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Build</h3>
+          <p>We design and develop your website, integrating everything your business needs to convert.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Launch</h3>
+          <p>We deploy your site, optimize for speed and search, and connect your analytics.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Maintain</h3>
+          <p>Every month we review performance and handle any updates, changes, or issues — forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="audit" class="audit-cta">
+    <div class="audit-card">
+      <div class="gold-e">E</div>
+      <h2>Ready to stop leaving <span>money</span> on the table?</h2>
+      <p>Get a free website health audit. We'll tell you exactly what's broken, what's missing, and what it's costing you — in plain English.</p>
+      <form class="audit-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" />
+        <button type="submit">Get My Free Audit →</button>
+      </form>
+      <p class="audit-note">Delivered within 24 hours. No sales pitch.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">M<span>I</span>NTER</div>
+        <p>Your website, handled. Every week.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Website Setup</a>
+          <a href="#">Monthly Retainer</a>
+          <a href="#">AI Live Chat</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Process</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Minter. All rights reserved.</p>
+      <div class="socials">
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget">
+    <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+      <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="chat-badge">1</span>
+    </button>
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <span>Chat with Minter</span>
+        <button id="chatClose" aria-label="Close">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">
+          <div class="avatar">M</div>
+          <div class="bubble">Hi! I'm the Minter assistant. What can I help you with today?</div>
+        </div>
+      </div>
+      <div class="quick-replies" id="quickReplies">
+        <button class="quick-reply" data-msg="What services do you offer?">Services</button>
+        <button class="quick-reply" data-msg="What does the retainer cost?">Pricing</button>
+        <button class="quick-reply" data-msg="How do I get a free audit?">Free Audit</button>
+      </div>
+      <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span> Typing...</div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" />
+        <button id="chatSend" aria-label="Send"><svg width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <script>
+
+const responses = {
+  services: "Minter offers three things:\n\n🎨 <strong>Website Setup</strong> — $1,497 one-time. Custom-designed, mobile-first, conversion-optimized.\n\n🔄 <strong>Full Retainer</strong> — $497/mo. Everything setup-wise, plus unlimited edits forever, hosting, AI live chat, and minor SEO.\n\n🔍 <strong>Free Audit</strong> — No cost, no strings. We review your website and tell you what's broken in 24 hours.",
+  pricing: "Here are your options:\n\n🎨 <strong>Website Setup</strong>: $1,497 one-time\n\n🔄 <strong>Full Retainer</strong>: $497/month — best value. Covers setup + hosting + AI chat + unlimited edits + minor SEO.\n\n🔍 <strong>Free Website Audit</strong>: $0 — no strings.",
+  audit: "Here's how the free audit works:\n\n1. You submit your email\n2. We review your website within 24 hours\n3. You get a plain-English report: what's broken, what's missing, and what it's costing you\n\nNo sales pitch. Ready to request yours?",
+  contact: "You can reach us anytime at hi@minteragency.co — we respond within a few hours during business days.",
+  default: "Thanks for reaching out! For the fastest answer, try clicking one of the quick reply buttons below. Or just type a question about our services, pricing, or the free audit.",
+  thanks: "You're welcome! Is there anything else I can help you with?",
+  hello: "Hey! 👋 Welcome to Minter. What would you like to know about? Try the quick replies below or just type your question!"
+};
+
+function sendMsg(text, fromUser) {
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + (fromUser ? 'user' : 'bot');
+  if (!fromUser) {
+    var avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    avatar.textContent = 'M';
+    div.appendChild(avatar);
+  }
+  var bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.innerHTML = fromUser ? text : responses.default;
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function handleInput(text) {
+  var lower = text.toLowerCase();
+  document.getElementById('quickReplies').style.display = 'none';
+  var typing = document.getElementById('chatTyping');
+  typing.classList.add('show');
+  document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+  var reply = responses.default;
+  if (lower.includes('service') || lower.includes('offer')) reply = responses.services;
+  else if (lower.includes('price') || lower.includes('cost') || lower.includes('monthly')) reply = responses.pricing;
+  else if (lower.includes('audit') || lower.includes('free')) reply = responses.audit;
+  else if (lower.includes('contact') || lower.includes('email') || lower.includes('reach')) reply = responses.contact;
+  else if (lower.includes('thank')) reply = responses.thanks;
+  else if (lower.includes('hi') || lower.includes('hey') || lower.includes('hello')) reply = responses.hello;
+  setTimeout(function() {
+    typing.classList.remove('show');
+    var msgs = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg bot';
+    div.innerHTML = '<div class="avatar">M</div><div class="bubble"></div>';
+    div.querySelector('.bubble').innerHTML = reply;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800 + Math.random() * 600);
+}
+
+document.getElementById('chatToggle').addEventListener('click', function() {
+  var box = document.getElementById('chatBox');
+  box.classList.toggle('open');
+  document.getElementById('quickReplies').style.display = box.classList.contains('open') ? 'flex' : 'none';
+  var badge = document.querySelector('.chat-badge');
+  if (badge) badge.remove();
+});
+document.getElementById('chatClose').addEventListener('click', function() {
+  document.getElementById('chatBox').classList.remove('open');
+});
+document.querySelectorAll('.quick-reply').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var msg = btn.getAttribute('data-msg');
+    var msgs = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg user';
+    div.innerHTML = '<div class="bubble"></div>';
+    div.querySelector('.bubble').textContent = msg;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    handleInput(msg);
+  });
+});
+document.getElementById('chatSend').addEventListener('click', function() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-msg user';
+  div.innerHTML = '<div class="bubble"></div>';
+  div.querySelector('.bubble').textContent = text;
+  msgs.appendChild(div);
+  input.value = '';
+  msgs.scrollTop = msgs.scrollHeight;
+  handleInput(text);
+});
+document.getElementById('chatInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('chatSend').click();
+});
+
+  </script>
+</body>
+</html>
