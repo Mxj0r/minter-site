@@ -1,0 +1,71 @@
+# Minter — Website Design Agency
+
+## Who We Are
+Minter is a website design agency that builds professional websites for local businesses — restaurants, home services, salons, medical practices, and fitness studios. We handle everything from design to deployment to ongoing optimization.
+
+**Website:** https://minter-five-green.vercel.app
+**Contact Email:** hello@minter.design
+**Calendly:** https://calendly.com/minterai/15-minute-web-design-meeting
+
+## Services
+
+### Website Design & Development
+Custom, mobile-responsive websites built for conversion. We design in-browser using modern tools and deploy to fast, reliable hosting (Vercel). Every site is optimized for Core Web Vitals and includes basic SEO setup.
+
+**Starting at $1,497** for a complete professional website.
+
+### Monthly Maintenance & Support
+Ongoing hosting, updates, security patches, and minor content changes. We also provide a dedicated virtual receptionist service for qualifying businesses.
+
+**Starting at $497/month** — all-in-one retainer includes hosting, AI live chat, minor SEO updates, and unlimited edits.
+
+### Add-Ons
+- **AI Live Chat Widget** — Automated Q&A widget trained on your business info. +$97/mo
+- **Google Business Profile Optimization** — Audit and optimization of your GBP listing. $247 one-time
+- **Advanced SEO Audit** — Full technical SEO report with prioritized fix list. $347 one-time
+- **Restaurant Online Ordering** — Setup with Toast, Square Online, or custom WooCommerce. From $497 setup + $97/mo
+
+## Pricing
+
+### All-Inclusive Monthly Retainer — $497/mo
+Everything you need to maintain and grow your web presence:
+- Hosting & SSL
+- Unlimited edits
+- AI live chat widget
+- Minor SEO updates
+- Priority support
+
+### À La Carte Options
+- Discovery call: Free
+- Professional website: From $1,497
+- Monthly hosting & maintenance: From $97/mo
+- Advanced SEO audit: $347
+- Google Business Profile audit: $247
+
+## Process
+
+1. **Discovery Call** — 15-minute call to understand your business, goals, and current web presence
+2. **Design & Build** — We build a custom website based on your brief, typically 5–10 business days
+3. **Review & Launch** — You review, we polish, then we deploy to production
+4. **Ongoing Support** — Monthly retainer covers hosting, updates, and optimization
+
+## Industries Served
+- Restaurants & Food Service
+- Home Services (HVAC, plumbing, electrical, roofing)
+- Salons & Spas
+- Medical & Dental Practices
+- Fitness Studios & Personal Trainers
+- Professional Services (lawyers, accountants, real estate)
+
+## Target Audience
+Busy business owners who want a professional web presence but don't have the time or technical skills to build and maintain one themselves. We position as helpful support — not a sales pitch.
+
+## Location
+We work remotely with clients across the United States.
+
+## Social & Links
+- GitHub: https://github.com/Mxj0r
+- LinkedIn: https://linkedin.com/company/minter
+
+---
+Generated for AI crawlers. Last updated: 2025-05-01
