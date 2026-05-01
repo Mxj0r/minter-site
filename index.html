@@ -628,6 +628,19 @@
     .audit-note {
       font-family: 'Manrope', sans-serif;
       font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-top: -8px;
+    }
+    .audit-success {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      color: #06BB60;
+      text-align: center;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .audit-form button:disabled {
       color: rgba(255,255,255,0.3);
     }
 
@@ -1104,11 +1117,12 @@
         <span class="audit-gold-e">E</span>
         <h2>Ready to stop leaving <span>money</span> on the table?</h2>
         <p>Get a free website health audit. We'll tell you exactly what's broken, what's missing, and what it's costing you — in plain English, within 24 hours.</p>
-        <form class="audit-form" onsubmit="return false;">
-          <input type="email" placeholder="your@email.com" autocomplete="email">
-          <button type="submit">Get My Free Audit →</button>
+        <form class="audit-form" id="auditForm">
+          <input type="email" id="auditEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
+          <button type="submit" id="auditSubmit">Get My Free Audit →</button>
         </form>
-        <p class="audit-note">No sales pitch. No obligation. Just answers.</p>
+        <p class="audit-note" id="auditNote">No sales pitch. No obligation. Just answers.</p>
+        <p class="audit-success" id="auditSuccess" style="display:none;">You're in! Check your inbox within 24 hours for your free audit. 🎉</p>
       </div>
     </div>
   </section>
@@ -1308,6 +1322,44 @@
     });
     document.getElementById('chatInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') document.getElementById('chatSend').click();
+    });
+
+    // --- Audit Form Submission ---
+    document.getElementById('auditForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('auditEmail').value.trim();
+      var btn = document.getElementById('auditSubmit');
+      var note = document.getElementById('auditNote');
+      var success = document.getElementById('auditSuccess');
+
+      if (!email) return;
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      fetch('https://uojngefdcchlubnezpgc.supabase.co/rest/v1/audit_requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvam5nZWZkY2NobHVibmV6cGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5MTk4MDB9.W7JkSZxFSqELP2mV3QkS-E-SZ8ZYVP3ScTn3V8ihHNw',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvam5nZWZkY2NobHVibmV6cGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5MTk4MDB9.W7JkSZxFSqELP2mV3QkS-E-SZ8ZYVP3ScTn3V8ihHNw',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Submission failed');
+        note.style.display = 'none';
+        success.style.display = 'block';
+        document.getElementById('auditEmail').value = '';
+      })
+      .catch(function() {
+        btn.textContent = 'Get My Free Audit →';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        alert('Something went wrong. Please try again or email us directly.');
+      });
     });
   </script>
 </body>
