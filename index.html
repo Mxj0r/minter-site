@@ -1349,16 +1349,20 @@
         body: JSON.stringify({ email: email })
       })
       .then(function(res) {
-        if (!res.ok) throw new Error('Submission failed');
+        if (!res.ok) {
+          console.error('Audit insert failed with status:', res.status, res.statusText);
+          throw new Error('HTTP ' + res.status);
+        }
         note.style.display = 'none';
         success.style.display = 'block';
         document.getElementById('auditEmail').value = '';
       })
-      .catch(function() {
+      .catch(function(err) {
         btn.textContent = 'Get My Free Audit →';
         btn.disabled = false;
         btn.style.opacity = '1';
-        alert('Something went wrong. Please try again or email us directly.');
+        console.error('Audit form error:', err);
+        alert('Error: ' + (err.message || 'Submission failed. Please try again or email minterai@gmail.com'));
       });
     });
   </script>
