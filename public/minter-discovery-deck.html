@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minter — Discovery Call</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #06BB60;
+            --green-deep: #05a352;
+            --gold: #D4A853;
+            --dark: #0d1117;
+            --dark-card: #161b22;
+            --white: #ffffff;
+            --gray: #8b949e;
+            --gray-light: #c9d1d9;
+            --slide-bg: #0d1117;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #000;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        @media (min-width: 769px) {
+            .slide-deck {
+                max-width: calc(100vh * 16 / 9);
+                max-height: calc(100vw * 9 / 16);
+                margin: auto;
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s;
+            background: var(--slide-bg);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .slide-content.start-left {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px, 4.5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: clamp(16px, 2vw, 22px);
+            line-height: 1.6;
+            color: var(--gray-light);
+            max-width: 700px;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 2.2vw, 26px);
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .gold-e {
+            color: var(--gold);
+        }
+
+        .green-text {
+            color: var(--green);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .white-text {
+            color: var(--white);
+        }
+
+        /* Title slide */
+        .logo-mark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .logo-mark .gold-e {
+            color: var(--gold);
+        }
+
+        /* Problem slide */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .problem-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: left;
+        }
+
+        .problem-card .icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .problem-card h3 {
+            font-size: clamp(16px, 1.8vw, 22px);
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .problem-card p {
+            font-size: clamp(13px, 1.4vw, 16px);
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Big stat slide */
+        .big-stat {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .big-stat .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(72px, 14vw, 160px);
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--green) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .big-stat .label {
+            font-size: clamp(20px, 3vw, 36px);
+            color: var(--gray-light);
+            margin-top: 8px;
+        }
+
+        /* Solution / how it works */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 22px 28px;
+            text-align: left;
+        }
+
+        .step-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            color: var(--green);
+            min-width: 52px;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .step-body h3 {
+            font-size: clamp(16px, 1.8vw, 22px);
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .step-body p {
+            font-size: clamp(13px, 1.4vw, 16px);
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: var(--dark-card);
+            border: 2px solid var(--green);
+            border-radius: 24px;
+            padding: 40px 48px;
+            text-align: center;
+            width: 100%;
+            max-width: 560px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green), var(--gold));
+        }
+
+        .pricing-label {
+            font-size: clamp(13px, 1.4vw, 16px);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--green);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 8vw, 88px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .pricing-price .per {
+            font-size: 0.35em;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .pricing-tagline {
+            font-size: clamp(15px, 1.6vw, 20px);
+            color: var(--gray-light);
+            margin: 12px 0 28px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(13px, 1.5vw, 17px);
+            color: var(--gray-light);
+        }
+
+        .pricing-features li .check {
+            color: var(--green);
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        /* Social proof */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .testimonial {
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 24px 28px;
+            text-align: left;
+        }
+
+        .testimonial .stars {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial .quote {
+            font-size: clamp(14px, 1.5vw, 18px);
+            color: var(--gray-light);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .testimonial .author {
+            font-size: clamp(12px, 1.3vw, 15px);
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* CTA slide */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(6, 187, 96, 0.15) 0%, rgba(212, 168, 83, 0.1) 100%);
+            border: 1px solid rgba(6, 187, 96, 0.3);
+            border-radius: 24px;
+            padding: 48px 56px;
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 16px;
+        }
+
+        .cta-box p {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: var(--white);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 9999px;
+            font-size: clamp(15px, 1.6vw, 18px);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-deep);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--gray-light);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            padding: 16px 36px;
+            border-radius: 9999px;
+            font-size: clamp(15px, 1.6vw, 18px);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.5);
+            color: var(--white);
+        }
+
+        /* Divider label */
+        .section-label {
+            font-size: clamp(12px, 1.3vw, 15px);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Animations */
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-stagger > * {
+            opacity: 0;
+            animation: fadeUp 0.5s ease-out forwards;
+        }
+
+        .animate-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+        .animate-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+        .animate-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+        .animate-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+        .animate-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+        .animate-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--gold));
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        /* Nav */
+        .nav-controls {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--white);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .slide-counter {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide { padding: 40px 28px; }
+            .problem-grid { grid-template-columns: 1fr; gap: 14px; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .pricing-card { padding: 28px 24px; }
+            .cta-box { padding: 32px 24px; }
+            .step { padding: 16px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .slide { padding: 32px 20px; }
+            .nav-controls { bottom: 16px; gap: 14px; }
+            .nav-btn { width: 36px; height: 36px; font-size: 16px; }
+            .btn-primary, .btn-ghost { padding: 14px 24px; font-size: 15px; }
+            .cta-actions { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="slide-deck">
+
+        <!-- SLIDE 1: HOOK -->
+        <div class="slide active" id="slide-1">
+            <div class="slide-content start-left" style="justify-content: center; height: 100%;">
+                <div class="logo-mark animate-fade-up">
+                    MINT<span class="gold-e">E</span>R
+                </div>
+                <h1 class="animate-fade-up" style="animation-delay: 0.1s;">
+                    You have great<br>reviews.
+                </h1>
+                <h2 class="animate-fade-up" style="animation-delay: 0.2s;">
+                    But no website to<br>show for it.
+                </h2>
+                <p class="subtitle animate-fade-up" style="animation-delay: 0.3s; margin-top: 12px;">
+                    Here's how that gap is quietly costing you customers — and<br>what we built to fix it.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: THE PROBLEM -->
+        <div class="slide" id="slide-2">
+            <div class="slide-content">
+                <p class="section-label">The Problem</p>
+                <h2 class="animate-fade-up" style="margin-bottom: 28px;">Here's what we hear<br>all the time.</h2>
+                <div class="problem-grid animate-stagger">
+                    <div class="problem-card">
+                        <span class="icon">📱</span>
+                        <h3>"I get found on Google."</h3>
+                        <p>People search, find your listing, get excited — then have nowhere to go except call or DM. Most won't.</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="icon">⭐</span>
+                        <h3>"My reviews are 4.9★."</h3>
+                        <p>Amazing social proof — locked inside a Google listing nobody reads. No way to share it, frame it, or leverage it.</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="icon">📅</span>
+                        <h3>"I just use my Instagram."</h3>
+                        <p>Social is great for engagement, but it doesn't capture intent. Someone ready to book won't scroll your feed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: THE COST -->
+        <div class="slide" id="slide-3">
+            <div class="slide-content">
+                <p class="section-label">The Cost</p>
+                <h2 style="margin-bottom: 32px;">Every day your spot is<br>findable but invisible.</h2>
+                <div class="big-stat animate-fade-up">
+                    <div class="number">76%</div>
+                    <div class="label">of people who search for a restaurant<br>never go past the first page of Google.</div>
+                </div>
+                <p class="animate-fade-up" style="text-align: center; margin-top: 32px; font-size: clamp(15px, 1.6vw, 19px);">
+                    And of those — <strong style="color: var(--white);">the majority choose the first result with a real website.</strong><br>
+                    Not the one with just a Google listing and a phone number.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: OUR SOLUTION -->
+        <div class="slide" id="slide-4">
+            <div class="slide-content">
+                <p class="section-label">Our Solution</p>
+                <h2 class="animate-fade-up" style="margin-bottom: 32px;">A professional website.<br>Done-for-you, start to finish.</h2>
+                <div class="problem-grid animate-stagger">
+                    <div class="problem-card">
+                        <span class="icon">🎨</span>
+                        <h3>Custom Design</h3>
+                        <p>Built for your brand — not a template. Mobile-first, fast, and optimized to convert visitors into customers.</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="icon">🚀</span>
+                        <h3>Live in Days</h3>
+                        <p>We design, build, and deploy your site in 5–10 business days. You review, we polish, it goes live.</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="icon">💬</span>
+                        <h3>AI Live Chat</h3>
+                        <p>Optional widget trained on your business — answers questions, books reservations, captures leads 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: HOW IT WORKS -->
+        <div class="slide" id="slide-5">
+            <div class="slide-content">
+                <p class="section-label">How It Works</p>
+                <h2 class="animate-fade-up" style="margin-bottom: 28px;">From conversation to live site<br>— in under two weeks.</h2>
+                <div class="steps animate-stagger">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div class="step-body">
+                            <h3>Discovery Call</h3>
+                            <p>We learn about your business, your goals, and what your current (or missing) web presence looks like.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div class="step-body">
+                            <h3>We Design & Build</h3>
+                            <p>Custom design, mobile-first, built for conversion. We handle everything — you just review when it's ready.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div class="step-body">
+                            <h3>Launch & Maintain</h3>
+                            <p>Your site goes live. For $497/mo, we keep it running, updated, and optimized — forever.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: PRICING -->
+        <div class="slide" id="slide-6">
+            <div class="slide-content">
+                <p class="section-label">Simple Pricing</p>
+                <h2 style="margin-bottom: 36px;">One price.<br>Everything included.</h2>
+                <div class="pricing-card animate-fade-up">
+                    <p class="pricing-label">All-Inclusive Retainer</p>
+                    <div class="pricing-price">$497<span class="per">/mo</span></div>
+                    <p class="pricing-tagline">Hosting + Maintenance + Edits + AI Chat</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Custom website design &amp; development</li>
+                        <li><span class="check">✓</span> Mobile-first, fast, conversion-optimized</li>
+                        <li><span class="check">✓</span> Hosting, SSL, and ongoing maintenance</li>
+                        <li><span class="check">✓</span> Unlimited edits — forever</li>
+                        <li><span class="check">✓</span> AI live chat widget trained on your business</li>
+                        <li><span class="check">✓</span> Minor SEO updates, every month</li>
+                        <li><span class="check">✓</span> Priority support — direct line to us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: SOCIAL PROOF -->
+        <div class="slide" id="slide-7">
+            <div class="slide-content">
+                <p class="section-label">Built for Businesses Like Yours</p>
+                <h2 style="margin-bottom: 28px;">We work with restaurants,<br>service businesses, and more.</h2>
+                <div class="testimonial-grid animate-stagger">
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"We had great reviews but nothing to send people to. Minter built us a site in a week and we already get inquiries from it every day."</p>
+                        <p class="author">— Local restaurant owner, Austin TX</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"I kept putting off building a site because I didn't have time. They handled everything and I barely had to think about it."</p>
+                        <p class="author">— Home services business, Houston TX</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"The AI chat widget alone has saved us probably 10+ phone calls a week. It's like having a receptionist who never sleeps."</p>
+                        <p class="author">— Salon owner, Los Angeles CA</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"For $497 a month I get my site maintained, updated, and a live chat widget. I honestly don't know how I managed without it."</p>
+                        <p class="author">— Fitness studio, San Antonio TX</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: CTA -->
+        <div class="slide" id="slide-8">
+            <div class="slide-content">
+                <div class="cta-box animate-fade-up">
+                    <h2>Let's fix your web presence.</h2>
+                    <p>No technical jargon. No complicated packages.<br>We handle everything — you just show up to the first call.</p>
+                    <div class="cta-actions">
+                        <a href="https://calendly.com/minterai/15-minute-web-design-meeting" target="_blank" class="btn-primary">
+                            Book a Discovery Call →
+                        </a>
+                        <a href="https://minter-five-green.vercel.app" target="_blank" class="btn-ghost">
+                            See Our Work
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 40px; text-align: center;">
+                    <p class="section-label" style="margin-bottom: 8px;">Ready When You Are</p>
+                    <p style="font-size: clamp(14px, 1.5vw, 18px);">
+                        Questions first? Reach us at <span style="color: var(--green);">hi@minteragency.co</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.slide-deck -->
+
+    <!-- Navigation -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">←</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">8</span></span>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        let current = 1;
+        const total = document.querySelectorAll('.slide').length;
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            current = n;
+            document.querySelectorAll('.slide').forEach((s, i) => {
+                s.classList.toggle('active', i === n - 1);
+            });
+            document.getElementById('current').textContent = n;
+            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-controls') && !e.target.closest('a') && !e.target.closest('button')) {
+                nextSlide();
+            }
+        });
+
+        showSlide(1);
+    </script>
+</body>
+</html>
