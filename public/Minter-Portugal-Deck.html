@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minter — Websites para Restaurantes e Comércios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #06BB60;
+            --green-dark: #049a47;
+            --green-light: rgba(6, 187, 96, 0.12);
+            --gold: #D4A853;
+            --gold-light: rgba(212, 168, 83, 0.12);
+            --dark: #0D1117;
+            --dark-2: #161B22;
+            --dark-3: #1E2430;
+            --text: #E8EDF3;
+            --text-dim: #8B949E;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        @media (min-width: 769px) {
+            .slide-deck {
+                max-width: calc(100vh * 16 / 9);
+                max-height: calc(100vw * 9 / 16);
+                margin: auto;
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s;
+            background: var(--dark);
+            overflow: hidden;
+        }
+
+        .slide.active { opacity: 1; visibility: visible; }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1100px;
+            max-height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .slide-content.grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .slide-content.grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        /* Backgrounds */
+        .bg-dots {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .bg-gradient-green {
+            background: linear-gradient(135deg, rgba(6,187,96,0.08) 0%, transparent 60%);
+        }
+
+        .bg-gradient-gold {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08) 0%, transparent 60%);
+        }
+
+        .bg-card {
+            background: var(--dark-2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .bg-card-green {
+            background: var(--green-light);
+            border: 1px solid rgba(6,187,96,0.25);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        /* Typography */
+        .eyebrow {
+            font-size: clamp(11px, 1.4vw, 13px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+        .eyebrow.gold { color: var(--gold); }
+
+        h1 {
+            font-size: clamp(36px, 6.5vw, 78px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: clamp(26px, 4.5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: clamp(16px, 2.2vw, 22px);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        p, li {
+            font-size: clamp(14px, 1.8vw, 18px);
+            line-height: 1.65;
+            color: var(--text-dim);
+        }
+
+        .lead {
+            font-size: clamp(16px, 2.2vw, 22px);
+            line-height: 1.5;
+            color: var(--text-dim);
+            max-width: 680px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--green), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .green { color: var(--green); }
+        .gold { color: var(--gold); }
+
+        /* Brand wordmark */
+        .wordmark {
+            font-size: clamp(48px, 9vw, 110px);
+            font-weight: 700;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+        .wordmark .m { color: var(--green); }
+        .wordmark .int { color: var(--gold); }
+        .wordmark .er { color: var(--gold); }
+
+        /* Price display */
+        .price-lg {
+            font-size: clamp(42px, 7vw, 80px);
+            font-weight: 700;
+            color: var(--green);
+        }
+        .price-lg sup {
+            font-size: 0.45em;
+            vertical-align: super;
+        }
+        .price-label {
+            font-size: clamp(13px, 1.6vw, 16px);
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .price-card {
+            background: var(--dark-2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .price-card.featured {
+            border-color: var(--green);
+            background: var(--green-light);
+            transform: scale(1.04);
+        }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: clamp(13px, 1.7vw, 17px);
+            color: var(--text-dim);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Stats */
+        .stat-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .stat-number {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            color: var(--green);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: clamp(11px, 1.4vw, 14px);
+            color: var(--text-dim);
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        /* Icon placeholder (emoji-based) */
+        .icon-lg {
+            font-size: clamp(28px, 4vw, 44px);
+            margin-bottom: 12px;
+        }
+
+        /* CTA */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--green);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(14px, 1.8vw, 18px);
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .cta-btn:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--gold));
+            border-radius: 2px;
+            margin: 8px auto;
+        }
+
+        /* Logo row */
+        .logo-row {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logo-item {
+            font-size: clamp(14px, 1.8vw, 18px);
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--gold));
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        /* Nav */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.08);
+            border: none;
+            color: #fff;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.16); }
+        .slide-counter { color: rgba(255,255,255,0.4); font-size: 13px; font-family: 'Space Grotesk', sans-serif; }
+
+        /* Slide number badge */
+        .slide-num {
+            position: absolute;
+            top: 28px;
+            right: 36px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.25);
+            font-weight: 500;
+        }
+
+        /* Brand footer */
+        .brand-footer {
+            position: absolute;
+            bottom: 24px;
+            left: 36px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.2);
+            font-weight: 500;
+        }
+        .brand-footer span.green { color: var(--green); }
+        .brand-footer span.gold { color: var(--gold); }
+
+        /* Animations */
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .slide { padding: 40px 24px; }
+            .slide-content.grid-2 { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+            .slide-content.grid-3 { grid-template-columns: 1fr; }
+            .nav-controls { bottom: 20px; gap: 14px; }
+            .nav-btn { width: 34px; height: 34px; font-size: 15px; }
+            .price-card.featured { transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .slide { padding: 32px 16px; }
+            h1 { letter-spacing: -0.5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="slide-deck">
+
+        <!-- SLIDE 1: Title -->
+        <div class="slide active bg-dots">
+            <span class="slide-num">01 / 10</span>
+            <div class="slide-content" style="gap: 24px;">
+                <p class="eyebrow animate-fade-up">Para Restaurantes, Cafés e Comércios Locais</p>
+                <div class="wordmark animate-fade-up delay-1">
+                    <span class="m">M</span><span class="int">IN</span><span class="er">TER</span>
+                </div>
+                <div class="divider animate-fade-up delay-1"></div>
+                <h2 class="animate-fade-up delay-2" style="max-width: 720px;">
+                    O seu website profissional.<br>
+                    <span class="gradient-text">Mais clientes.</span>
+                </h2>
+                <p class="lead animate-fade-up delay-3" style="max-width: 560px;">
+                    Ajudamos negócios locais em Portugal a ter presença online profissional que gera visibilidade e reservas.
+                </p>
+                <div class="animate-fade-up delay-4">
+                    <button class="cta-btn" onclick="nextSlide()">Ver Como Funciona →</button>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 2: O Problema -->
+        <div class="slide bg-gradient-green">
+            <span class="slide-num">02 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">O Problema</p>
+                <h2 class="animate-fade-up delay-1" style="max-width: 800px;">
+                    Os seus clientes procuram-no online.<br>
+                    <span class="green">Mas não o encontram.</span>
+                </h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <p class="lead animate-fade-up delay-2" style="max-width: 640px;">
+                    Tem ótimos comentários no Google. As pessoas falam de si. Mas sem um website profissional, está a perder clientes todos os dias para a concorrência.
+                </p>
+                <div class="grid-3 animate-fade-up delay-3" style="margin-top: 16px; width: 100%; max-width: 900px;">
+                    <div class="bg-card stat-card">
+                        <div class="stat-number">89%</div>
+                        <div class="stat-label">dos portugueses usa a internet diariamente</div>
+                    </div>
+                    <div class="bg-card stat-card">
+                        <div class="stat-number">71%</div>
+                        <div class="stat-label">procura negócios locais no Google todos os dias</div>
+                    </div>
+                    <div class="bg-card stat-card">
+                        <div class="stat-number">5×</div>
+                        <div class="stat-label">mais hipóteses de ser contactado com website</div>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 3: O Custo de Não Agir -->
+        <div class="slide bg-dots">
+            <span class="slide-num">03 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow gold animate-fade-up">O Custo de Não Agir</p>
+                <h2 class="animate-fade-up delay-1">
+                    Quanto está a perder por mês<br>
+                    <span class="gold">sem um website?</span>
+                </h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <div class="grid-2 animate-fade-up delay-2" style="width: 100%; max-width: 900px; margin-top: 12px;">
+                    <div class="bg-card">
+                        <div style="text-align:left;">
+                            <p style="font-size: clamp(14px,1.7vw,17px); color: var(--text-dim); margin-bottom: 16px;">Um restaurante médio em Lisboa recebe:</p>
+                            <div style="display:flex; flex-direction:column; gap: 14px;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                    <span style="color: var(--text-dim); font-size: clamp(12px,1.5vw,15px);">Visitas ao perfil Google</span>
+                                    <span style="color: var(--text); font-weight:600;">~800/mês</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                    <span style="color: var(--text-dim); font-size: clamp(12px,1.5vw,15px);">Chamadas perdidas</span>
+                                    <span class="gold" style="font-weight:700; font-size: 1.1em;">~120/mês</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span style="color: var(--text-dim); font-size: clamp(12px,1.5vw,15px);">Potencial perdido (2+ reservas/semana)</span>
+                                    <span class="green" style="font-weight:700; font-size: 1.1em;">~€400–€800/mês</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-card" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap: 16px;">
+                        <p style="font-size: clamp(13px,1.5vw,15px); color: var(--text-dim);">Um website profissional pode aumentar as reservas em</p>
+                        <div style="font-size: clamp(48px,7vw,72px); font-weight:700; background: linear-gradient(135deg, var(--green), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height:1;">+30–60%</div>
+                        <p style="font-size: clamp(13px,1.5vw,15px); color: var(--text-dim);">só com visibilidade online</p>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 4: A Solução -->
+        <div class="slide">
+            <span class="slide-num">04 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">A Solução</p>
+                <h2 class="animate-fade-up delay-1" style="max-width: 760px;">
+                    Websites profissionais<br>
+                    <span class="gradient-text">feitos para o seu negócio.</span>
+                </h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <p class="lead animate-fade-up delay-2" style="max-width: 600px; margin-top: 4px;">
+                    Não é um template genérico. É um website criado para o seu restaurante, café ou comércio — com foco em resultados.
+                </p>
+                <div class="grid-3 animate-fade-up delay-3" style="width: 100%; max-width: 960px; margin-top: 16px;">
+                    <div class="bg-card" style="text-align:left;">
+                        <div class="icon-lg">🍽️</div>
+                        <h3 style="margin-bottom: 8px;">Feito para Restaurantes</h3>
+                        <p>Menu digital, sistema de reservas, galeria de pratos. Os seus clientes encontram tudo num só lugar.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:left;">
+                        <div class="icon-lg">🔧</div>
+                        <h3 style="margin-bottom: 8px;">Feito para Comércios</h3>
+                        <p>Serviços expostos, área de contacto simples, formulário de orçamento. Mais leads, mais orçamentos.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:left;">
+                        <div class="icon-lg">📱</div>
+                        <h3 style="margin-bottom: 8px;">Sempre Atualizado</h3>
+                        <p>O seu website evolve com o seu negócio. Sem complicated técnicos, sem chamadas de suporte.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 5: O Que Incluímos -->
+        <div class="slide bg-gradient-green">
+            <span class="slide-num">05 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">Tudo Incluído</p>
+                <h2 class="animate-fade-up delay-1">O que recebe com o seu website</h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <div class="grid-2 animate-fade-up delay-2" style="width: 100%; max-width: 900px; margin-top: 12px; text-align:left;">
+                    <div class="bg-card" style="padding: 28px 32px;">
+                        <h3 style="color: var(--green); margin-bottom: 18px;">Design & Desenvolvimento</h3>
+                        <ul class="feature-list">
+                            <li>Design profissional adaptado ao seu negócio</li>
+                            <li>100% responsivo (telemóvel, tablet, computador)</li>
+                            <li>Otimizado para motores de busca (SEO)</li>
+                            <li>Galeria de fotos e imagens profissionais</li>
+                            <li>Horário de funcionamento e morada</li>
+                            <li>Botão "Ligar Agora" e link para WhatsApp</li>
+                            <li>Integração com Google Maps</li>
+                            <li>Certificado SSL (website seguro)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-card" style="padding: 28px 32px;">
+                        <h3 style="color: var(--gold); margin-bottom: 18px;">Suporte Contínuo</h3>
+                        <ul class="feature-list">
+                            <li>Hospedagem rápida e segura incluída</li>
+                            <li>Atualizações de conteúdos incluídas</li>
+                            <li>Backup diário automático</li>
+                            <li>Suporte por WhatsApp</li>
+                            <li>Relatório mensal de visitas</li>
+                            <li>Domínio próprio (ex: seurestaurante.pt)</li>
+                            <li>Email profissional incluído</li>
+                            <li>Conformidade com RGPD</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 6: Para Quem É -->
+        <div class="slide">
+            <span class="slide-num">06 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">Nichos Que Servimos</p>
+                <h2 class="animate-fade-up delay-1">Criamos websites para<br><span class="gradient-text">negócios locais</span></h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <div class="grid-3 animate-fade-up delay-2" style="width: 100%; max-width: 960px; margin-top: 20px; text-align:left;">
+                    <div class="bg-card-green" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">🍽️</div>
+                        <h3 style="margin-bottom: 8px;">Restaurantes & Cafés</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Menu digital, reservas, horário, fotos profissionais. Os seus clientes reservation online sem complicar.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">🔧</div>
+                        <h3 style="margin-bottom: 8px;">Eletricistas & Canalizadores</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Serviços expostos, área de contacto, formulário de orçamento rápido. Mais chamadas, mais clientes.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">❄️</div>
+                        <h3 style="margin-bottom: 8px;">HVAC & Climatização</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Zonas de serviço, marcação online, testemunhos de clientes. Visibilidade que gera orçamentos.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">🏗️</div>
+                        <h3 style="margin-bottom: 8px;">Construção & Remodelações</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Portfólio de projetos, áreas de serviço, contacto direto. Construa credibilidade online.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">💇</div>
+                        <h3 style="margin-bottom: 8px;">Salões de Beleza</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Serviços, preços, galeria, botão de marcação. Facilite que os clientes reservem.</p>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 32px 20px;">
+                        <div class="icon-lg">🏨</div>
+                        <h3 style="margin-bottom: 8px;">Guesthouses & B&B</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Fotos do espaço, comodidades, reservas diretas. presença online que funciona 24h.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 7: Preços -->
+        <div class="slide bg-gradient-gold">
+            <span class="slide-num">07 / 10</span>
+            <div class="slide-content" style="gap: 16px;">
+                <p class="eyebrow gold animate-fade-up">Investimento</p>
+                <h2 class="animate-fade-up delay-1">Simples e transparente.</h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <p class="lead animate-fade-up delay-2" style="max-width: 560px;">
+                    Sem surpresas. Sem custos escondidos. Só um website profissional que funciona.
+                </p>
+                <div class="grid-2 animate-fade-up delay-3" style="width: 100%; max-width: 820px; margin-top: 8px;">
+                    <!-- Build price -->
+                    <div class="price-card">
+                        <p style="font-size: clamp(13px,1.5vw,15px); color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Website Profissional</p>
+                        <div class="price-lg"><sup>€</sup>650</div>
+                        <p class="price-label">pagamento único</p>
+                        <ul class="feature-list" style="margin-top: 12px;">
+                            <li>Design profissional completo</li>
+                            <li>Desenvolvimento e publicação</li>
+                            <li>SEO otimizado para Google</li>
+                            <li>Hospedagem incluída (1.º ano)</li>
+                            <li>Domínio próprio (1.º ano)</li>
+                            <li>Conformidade RGPD</li>
+                        </ul>
+                    </div>
+                    <!-- Retainer -->
+                    <div class="price-card featured">
+                        <div style="display:flex; align-items:center; gap: 8px; margin-bottom: 4px;">
+                            <p style="font-size: clamp(13px,1.5vw,15px); color: var(--green); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Manutenção & Suporte</p>
+                        </div>
+                        <div class="price-lg" style="color: var(--green);"><sup>€</sup>50</div>
+                        <p class="price-label">por mês</p>
+                        <ul class="feature-list" style="margin-top: 12px;">
+                            <li>Hospedagem contínua</li>
+                            <li>Atualizações de conteúdos</li>
+                            <li>Backup diário</li>
+                            <li>Suporte por WhatsApp</li>
+                            <li>Relatório mensal de visitas</li>
+                            <li>Email profissional</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="animate-fade-up delay-4" style="font-size: clamp(12px,1.4vw,14px); color: rgba(255,255,255,0.35); margin-top: 4px;">
+                    * Preços em euros (EUR). IVA não incluído.
+                </p>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 8: Como Funciona -->
+        <div class="slide">
+            <span class="slide-num">08 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">Processo</p>
+                <h2 class="animate-fade-up delay-1">Como funciona —<br><span class="gradient-text">4 passos simples</span></h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <div class="grid-3 animate-fade-up delay-2" style="width: 100%; max-width: 960px; margin-top: 20px; text-align:left;">
+                    <div class="bg-card" style="position:relative; padding: 32px 24px;">
+                        <div style="position:absolute; top: 20px; right: 20px; font-size: 42px; font-weight:700; color: rgba(255,255,255,0.05);">01</div>
+                        <div class="icon-lg">📋</div>
+                        <h3 style="margin-bottom: 10px;">Briefing</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Conversamos sobre o seu negócio, serviços e objetivos. Sem complicated formulários.</p>
+                    </div>
+                    <div class="bg-card" style="position:relative; padding: 32px 24px;">
+                        <div style="position:absolute; top: 20px; right: 20px; font-size: 42px; font-weight:700; color: rgba(255,255,255,0.05);">02</div>
+                        <div class="icon-lg">🎨</div>
+                        <h3 style="margin-bottom: 10px;">Design</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Criamos o design do seu website. Apresentamos. Ajustamos até ficar perfeito.</p>
+                    </div>
+                    <div class="bg-card" style="position:relative; padding: 32px 24px;">
+                        <div style="position:absolute; top: 20px; right: 20px; font-size: 42px; font-weight:700; color: rgba(255,255,255,0.05);">03</div>
+                        <div class="icon-lg">🚀</div>
+                        <h3 style="margin-bottom: 10px;">Publicação</h3>
+                        <p style="font-size: clamp(12px,1.5vw,15px);">Publicamos o seu website e ligamos ao Google. O seu negócio fica visível online.</p>
+                    </div>
+                </div>
+                <div class="animate-fade-up delay-3" style="margin-top: 20px;">
+                    <div class="bg-card-green" style="padding: 20px 32px; display:inline-flex; align-items:center; gap: 16px; border-radius: 50px;">
+                        <span style="font-size: 22px;">⏱️</span>
+                        <div style="text-align:left;">
+                            <strong style="color: var(--green);">Timeline típico:</strong>
+                            <span style="color: var(--text-dim); font-size: clamp(13px,1.6vw,16px);"> 5–10 dias úteis do briefing à publicação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 9: Prova Social / Confiança -->
+        <div class="slide bg-dots">
+            <span class="slide-num">09 / 10</span>
+            <div class="slide-content">
+                <p class="eyebrow animate-fade-up">Confiança</p>
+                <h2 class="animate-fade-up delay-1" style="max-width: 720px;">
+                    Criado por uma equipa<br>
+                    <span class="gradient-text">focada em resultados.</span>
+                </h2>
+                <div class="divider animate-fade-up delay-1"></div>
+                <div class="grid-3 animate-fade-up delay-2" style="width: 100%; max-width: 900px; margin-top: 20px; text-align:left;">
+                    <div class="bg-card" style="text-align:center; padding: 28px 20px;">
+                        <div class="stat-number" style="font-size: clamp(28px,3.5vw,40px);">🇵🇹</div>
+                        <div class="stat-label" style="font-size: clamp(13px,1.6vw,16px); margin-top: 8px;">Focado no mercado<br>português</div>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 28px 20px;">
+                        <div class="stat-number" style="font-size: clamp(28px,3.5vw,40px);">📱</div>
+                        <div class="stat-label" style="font-size: clamp(13px,1.6vw,16px); margin-top: 8px;">WhatsApp como<br>canal principal</div>
+                    </div>
+                    <div class="bg-card" style="text-align:center; padding: 28px 20px;">
+                        <div class="stat-number" style="font-size: clamp(28px,3.5vw,40px);">🔒</div>
+                        <div class="stat-label" style="font-size: clamp(13px,1.6vw,16px); margin-top: 8px;">RGPD compliant.<br>Dados protegidos.</div>
+                    </div>
+                </div>
+                <p class="animate-fade-up delay-3" style="margin-top: 24px; font-size: clamp(14px,1.8vw,18px); color: var(--text-dim); max-width: 600px;">
+                    Não somos uma agência grande e distante. Somos uma equipa pequena e dedicada que conhece o mercado português.
+                </p>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+        <!-- SLIDE 10: CTA Final -->
+        <div class="slide">
+            <span class="slide-num">10 / 10</span>
+            <div class="slide-content" style="gap: 20px;">
+                <h2 class="animate-fade-up" style="max-width: 700px;">
+                    Está pronto para ter<br>
+                    <span class="gradient-text">o seu website profissional?</span>
+                </h2>
+                <p class="lead animate-fade-up delay-1" style="max-width: 520px;">
+                    Sem compromisso. Sem custos iniciais. Uma conversa rápida para percebermos se faz sentido para si.
+                </p>
+                <div class="animate-fade-up delay-2" style="display:flex; flex-direction:column; align-items:center; gap: 14px; margin-top: 8px;">
+                    <button class="cta-btn" style="font-size: clamp(15px,2vw,20px); padding: 18px 44px;">
+                        💬 Falar por WhatsApp
+                    </button>
+                    <p style="font-size: clamp(12px,1.4vw,14px); color: rgba(255,255,255,0.35);">
+                        Resposta em menos de 2 horas
+                    </p>
+                </div>
+                <div class="animate-fade-up delay-3" style="margin-top: 16px;">
+                    <div class="price-lg" style="font-size: clamp(20px,2.8vw,32px); margin-bottom: 4px;">
+                        <sup style="font-size:0.5em;">€</sup>650
+                    </div>
+                    <p class="price-label">+ €50/mês · Sem IVA · Sem compromisso</p>
+                </div>
+            </div>
+            <div class="brand-footer"><span class="green">M</span><span class="gold">INTER</span> · Portugal</div>
+        </div>
+
+    </div><!-- /.slide-deck -->
+
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">←</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">10</span></span>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        let current = 1;
+        const total = document.querySelectorAll('.slide').length;
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            current = n;
+            document.querySelectorAll('.slide').forEach((s, i) => {
+                s.classList.toggle('active', i === n - 1);
+            });
+            document.getElementById('current').textContent = n;
+            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-controls') && !e.target.closest('.cta-btn')) nextSlide();
+        });
+
+        showSlide(1);
+    </script>
+</body>
+</html>
