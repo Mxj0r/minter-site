@@ -736,8 +736,8 @@
       margin-bottom: 16px;
     }
     .audit-form input {
-      flex: 1;
-      min-width: 200px;
+      flex: 1 1 calc(50% - 6px);
+      min-width: 160px;
       padding: 13px 20px;
       border-radius: 9999px;
       border: 1.5px solid rgba(255,255,255,0.12);
@@ -751,6 +751,7 @@
     .audit-form input::placeholder { color: rgba(255,255,255,0.3); }
     .audit-form input:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
     .audit-form button {
+      flex: 0 0 auto;
       background: var(--gold);
       color: var(--dark);
       font-family: 'Manrope', sans-serif;
@@ -1073,7 +1074,7 @@
       .footer-inner { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .audit-form { flex-direction: column; }
-      .audit-form input { min-width: unset; width: 100%; }
+      .audit-form input { min-width: unset; width: 100%; flex: 1 1 100%; }
     }
   </style>
 </head>
@@ -1256,6 +1257,7 @@
         <h2>Ready to stop leaving <span class="gold-e">money</span> on the table?</h2>
         <p>Get a free website health audit. We'll tell you exactly what's broken, what's missing, and what it's costing you — in plain English, within 24 hours.</p>
         <form class="audit-form" id="auditForm">
+          <input type="text" id="auditName" name="name" placeholder="Your name" autocomplete="name" required>
           <input type="email" id="auditEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
           <button type="submit" id="auditSubmit">Get My Free Audit →</button>
         </form>
@@ -1465,12 +1467,13 @@
     // --- Audit Form Submission ---
     document.getElementById('auditForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      var name = document.getElementById('auditName').value.trim();
       var email = document.getElementById('auditEmail').value.trim();
       var btn = document.getElementById('auditSubmit');
       var note = document.getElementById('auditNote');
       var success = document.getElementById('auditSuccess');
 
-      if (!email) return;
+      if (!name || !email) return;
 
       btn.textContent = 'Sending…';
       btn.disabled = true;
@@ -1480,11 +1483,11 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvam5nZWZkY2NobHVibmV6cGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1OTg2ODQsImV4cCI6MjA5MzE3NDY4NH0.oN4mrGKnr1zzIEqYpKAXUpROG70bXXE6PYoP0jf5GVQ',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvam5nZWZkY2NobHVibmV6cGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1OTg2ODQsImV4cCI6MjA5MzE3NDY4NH0.oN4mrGKnr1zzIEqYpKAXUpROG70bXXE6PYoP0jf5GVQ',
+          'apikey': 'eyJhbG...5GVQ',
+          'Authorization': 'Bearer eyJhbG...5GVQ',
           'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({ email: email })
+        body: JSON.stringify({ name: name, email: email })
       })
       .then(function(res) {
         if (!res.ok) {
@@ -1493,6 +1496,7 @@
         }
         note.style.display = 'none';
         success.style.display = 'block';
+        document.getElementById('auditName').value = '';
         document.getElementById('auditEmail').value = '';
       })
       .catch(function(err) {
