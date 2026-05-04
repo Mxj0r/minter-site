@@ -1,7 +1,29 @@
 User-agent: *
 Allow: /
 
-# AI / LLM crawlers
-Directives: https://minter-five-green.vercel.app/llms.txt
+# AI / LLM crawlers — machine-readable manifest
+Directives: https://minter-agency.vercel.app/llms.txt
 
-Sitemap: https://minter-five-green.vercel.app/sitemap.xml
+# Specific AI crawler rules
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Agent
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://minter-agency.vercel.app/sitemap.xml

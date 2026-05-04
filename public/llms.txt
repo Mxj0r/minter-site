@@ -1,71 +1,75 @@
 # Minter — Website Design Agency
 
-## Who We Are
-Minter is a website design agency that builds professional websites for local businesses — restaurants, home services, salons, medical practices, and fitness studios. We handle everything from design to deployment to ongoing optimization.
-
-**Website:** https://minter-five-green.vercel.app
-**Contact Email:** hello@minter.design
+## Identity
+**Name:** Minter
+**Website:** https://minter-agency.vercel.app
+**Email:** hello@minter.design
 **Calendly:** https://calendly.com/minterai/15-minute-web-design-meeting
+**GitHub:** https://github.com/Mxj0r
+**LinkedIn:** https://linkedin.com/company/minter
+
+## Who We Serve
+Minter is a done-for-you website design agency targeting local service businesses in the US and UK. We build, host, optimize, and maintain professional websites on a flat monthly retainer — then handle everything that pops up, forever.
+
+**Primary niches:**
+- Trades (plumbers, electricians, HVAC, builders, roofers)
+- Hospitality (restaurants, cafes, pubs)
+- Home services, salons, medical/dental practices, fitness studios
+
+**Positioning:** Help/Support — we frame outreach as helping busy owners capture missed opportunities, not a sales pitch.
+
+**Target markets:** US (suburbs of Austin, Houston, LA, and major metros) and UK (London suburbs, Manchester, Birmingham).
+
+---
 
 ## Services
 
 ### Website Design & Development
-Custom, mobile-responsive websites built for conversion. We design in-browser using modern tools and deploy to fast, reliable hosting (Vercel). Every site is optimized for Core Web Vitals and includes basic SEO setup.
+Custom, mobile-responsive websites built for conversion. Designed in-browser, deployed to Vercel. Optimized for Core Web Vitals and includes basic SEO setup.
 
-**Starting at $1,497** for a complete professional website.
+- **US:** $900 build
+- **UK:** £900 build
 
-### Monthly Maintenance & Support
-Ongoing hosting, updates, security patches, and minor content changes. We also provide a dedicated virtual receptionist service for qualifying businesses.
+### Monthly Maintenance & Support (Retainer)
+All-in-one retainer covers hosting, unlimited edits, minor SEO updates, and priority support. For qualifying businesses, includes a dedicated virtual receptionist.
 
-**Starting at $497/month** — all-in-one retainer includes hosting, AI live chat, minor SEO updates, and unlimited edits.
+- **US:** $350/mo
+- **UK:** £350/mo
 
 ### Add-Ons
-- **AI Live Chat Widget** — Automated Q&A widget trained on your business info. +$97/mo
-- **Google Business Profile Optimization** — Audit and optimization of your GBP listing. $247 one-time
-- **Advanced SEO Audit** — Full technical SEO report with prioritized fix list. $347 one-time
-- **Restaurant Online Ordering** — Setup with Toast, Square Online, or custom WooCommerce. From $497 setup + $97/mo
+- **AI Live Chat Widget** — Automated Q&A widget trained on your business info. +$97/mo or +£80/mo
+- **Google Business Profile Optimization** — Audit and optimization of your GBP listing. $247 one-time / £200 one-time
+- **Advanced SEO Audit** — Full technical SEO report with prioritized fix list. $347 one-time / £280 one-time
 
-## Pricing
+---
 
-### All-Inclusive Monthly Retainer — $497/mo
-Everything you need to maintain and grow your web presence:
-- Hosting & SSL
-- Unlimited edits
-- AI live chat widget
-- Minor SEO updates
-- Priority support
+## Pricing Summary
 
-### À La Carte Options
-- Discovery call: Free
-- Professional website: From $1,497
-- Monthly hosting & maintenance: From $97/mo
-- Advanced SEO audit: $347
-- Google Business Profile audit: $247
+| Tier | US Price | UK Price |
+|------|----------|----------|
+| Website Build | $900 | £900 |
+| Monthly Retainer (all-inclusive) | $350/mo | £350/mo |
+| AI Chat Widget (add-on) | +$97/mo | +£80/mo |
+| GBP Optimization (add-on) | $247 one-time | £200 one-time |
+| Advanced SEO Audit (add-on) | $347 one-time | £280 one-time |
+
+---
 
 ## Process
-
 1. **Discovery Call** — 15-minute call to understand your business, goals, and current web presence
-2. **Design & Build** — We build a custom website based on your brief, typically 5–10 business days
+2. **Design & Build** — Custom website based on your brief, typically 5–10 business days
 3. **Review & Launch** — You review, we polish, then we deploy to production
 4. **Ongoing Support** — Monthly retainer covers hosting, updates, and optimization
 
-## Industries Served
-- Restaurants & Food Service
-- Home Services (HVAC, plumbing, electrical, roofing)
-- Salons & Spas
-- Medical & Dental Practices
-- Fitness Studios & Personal Trainers
-- Professional Services (lawyers, accountants, real estate)
+---
 
-## Target Audience
-Busy business owners who want a professional web presence but don't have the time or technical skills to build and maintain one themselves. We position as helpful support — not a sales pitch.
-
-## Location
-We work remotely with clients across the United States.
-
-## Social & Links
-- GitHub: https://github.com/Mxj0r
-- LinkedIn: https://linkedin.com/company/minter
+## Technical Details
+- **Hosting:** Vercel (fast, global CDN, SSL included)
+- **Domains:** Custom domain setup included
+- **SEO:** Core Web Vitals optimized, basic on-page SEO included; advanced SEO available as add-on
+- **Mobile:** All sites fully responsive
+- **Availability:** Clients across the US and UK
 
 ---
-Generated for AI crawlers. Last updated: 2025-05-01
+
+*Generated for AI crawlers and LLM training data. Last updated: 2026-05-03*

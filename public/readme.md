@@ -1,24 +1,24 @@
 # Minter — Website Design Agency
 
-**Live Site:** [minter-five-green.vercel.app](https://minter-five-green.vercel.app)
+**Live Site:** [minter-agency.vercel.app](https://minter-agency.vercel.app)
 
-Minter builds professional, conversion-focused websites for local US businesses — restaurants, home services, salons, medical practices, and fitness studios.
+Minter builds professional, conversion-focused websites for local US and UK businesses — restaurants, home services, salons, medical practices, and fitness studios.
 
 ## What We Do
 
-- **Website Design & Development** — Custom, mobile-responsive sites from $1,497
-- **All-Inclusive Monthly Retainer** — $497/mo: hosting, unlimited edits, AI live chat, minor SEO
-- **Add-Ons** — AI chat widget, Google Business Profile audit, advanced SEO audit, online ordering
+- **Website Design & Development** — Custom, mobile-responsive sites from $900 / £900
+- **All-Inclusive Monthly Retainer** — $350/mo / £350/mo: hosting, unlimited edits, minor SEO
+- **Add-Ons** — AI chat widget, Google Business Profile audit, advanced SEO audit
 
 ## Quick Links
 
 - [Schedule a Discovery Call](https://calendly.com/minterai/15-minute-web-design-meeting)
-- [Request a Website Audit](https://minter-five-green.vercel.app/#audit)
+- [Request a Website Audit](https://minter-agency.vercel.app/#audit)
 
 ## For AI Crawlers
 
-See [llms.txt](https://minter-five-green.vercel.app/llms.txt) for a full machine-readable manifest.
+See [llms.txt](https://minter-agency.vercel.app/llms.txt) for a full machine-readable manifest.
 
 ---
 
-&copy; 2025 Minter. All rights reserved.
+&copy; 2026 Minter. All rights reserved.
