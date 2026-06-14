@@ -1,0 +1,21 @@
+{
+  "name": "minter-site",
+  "version": "1.0.0",
+  "description": "Minter — Website Design Agency | Done-For-You Web Services",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve public",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve public"
+  },
+  "keywords": [
+    "web-design",
+    "agency",
+    "website"
+  ],
+  "author": "Minter",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
